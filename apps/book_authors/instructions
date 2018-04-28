@@ -1,0 +1,39 @@
+Creation of books
+# Book.objects.create(name="C sharp", desc="This is some description for C sharp"), id =1
+# Book.objects.create(name="Java", desc="This is some description for Java"), id =2
+# Book.objects.create(name="Java", desc="This is some description for Python"), id =3
+# Book.objects.create(name="Java", desc="This is some description for Php"), id =4
+# Book.objects.create(name="Java", desc="This is some description for Ruby"), id =5
+
+Adding relationship table - many to many query
+    this_book = Book.objects.get(pk=1)
+    this_author = Author.objects.get(pk=1)
+    this_author.books.add(this_book) - #the books & authors below is the representation of the joining table between Book and Author#
+
+Updating 
+    b = Book.objects.last()
+    b.name = call the column to update>
+    b.save() = update
+
+Assign authors to books
+    Author.objects.get(id=1).books.add(Book.objects.get(id=2))
+For the 2nd book, add the 5th author as one of the authors
+    Author.objects.filter(id=5).books.add(Book.objects.get(id=2))
+
+Retrieve all books from a specific authors
+    Book.objects.get(id=3).authors.all()
+Retrieve all authors from a specific books
+    Author.objects.filter(id=2).books.all()
+
+Delete the first author from a specific books
+    Book.objects.filter(id=3).authors.first().delete()
+
+
+
+
+
+
+
+
+
+
